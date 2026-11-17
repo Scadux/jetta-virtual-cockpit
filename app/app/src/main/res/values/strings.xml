@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jetta Virtual Cockpit</string>
+    <string name="settings">Configurações</string>
+    <string name="obd_notification_channel">Conexão OBD2</string>
+    <string name="obd_notification_text">Lendo dados do veículo</string>
+    <string name="choose_adapter">Escolher adaptador OBD2</string>
+    <string name="no_paired_devices">Nenhum dispositivo pareado. Pareie o adaptador no Bluetooth da multimídia primeiro.</string>
+    <string name="demo_mode">Modo demonstração (valores simulados)</string>
+    <string name="autostart">Abrir junto com a multimídia</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="connect">Conectar</string>
+    <string name="close">Fechar</string>
+    <string name="bluetooth_required">O Bluetooth é necessário para conectar ao adaptador OBD2.</string>
+    <string name="permission_required">Permissão de Bluetooth negada. Libere nas configurações do Android para usar o app.</string>
+</resources>

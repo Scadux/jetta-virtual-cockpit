@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080b10"><title>Jetta Virtual Cockpit</title>
+<style>
+:root{--bg:#080b10;--panel:#101722;--line:#253142;--red:#e33b43;--white:#f1f4f8;--muted:#8d9aaa;--cyan:#59c9e8;--amber:#e6b34d;--green:#3ddc84;--accent:#e33b43;--car-color:#c0c6cc;--car-dark:#6e767e}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--white);font-family:Inter,Segoe UI,Arial,sans-serif;overflow:hidden}
+body{background:radial-gradient(ellipse at 50% 48%,#17202b 0,#0b1017 48%,#06080c 100%)}
+.app{height:100dvh;width:100vw;display:flex}
+.rail{width:64px;flex:0 0 64px;background:#0a0f16;border-right:1px solid #222e3c;display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:6px}
+.rail .logo{font-weight:800;font-size:15px;letter-spacing:.08em;color:var(--red);margin-bottom:10px}
+.navbtn{width:52px;height:52px;border:1px solid transparent;background:transparent;border-radius:10px;color:#8d9aaa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;font-size:8px;letter-spacing:.08em}
+.navbtn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.navbtn.active{background:#1a2432;border-color:#2c3a4d;color:#fff}
+.navbtn.active svg{stroke:var(--accent)}
+.content{flex:1;min-width:0;padding:2vh 2vw;display:flex;flex-direction:column;gap:1.5vh}
+.screen{display:none;flex:1;min-height:0;flex-direction:column;gap:1.5vh}
+.screen.active{display:flex}
+.top{height:8%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #27313e;padding-bottom:1vh}
+.brand{font-weight:800;letter-spacing:.19em;font-size:clamp(13px,1.8vw,22px)}.brand span{color:var(--red)}
+.status{display:flex;gap:1.4vw;align-items:center;color:var(--muted);font-size:clamp(10px,1.15vw,14px)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#737e8b;margin-right:6px}.demo .dot{background:var(--amber);box-shadow:0 0 10px #e6b34d88}.connected .dot{background:var(--green);box-shadow:0 0 10px #3ddc8488}
+.tabs{display:flex;gap:8px}.tab{border:1px solid #2a3544;background:#111823;color:#aab5c2;padding:9px 17px;border-radius:5px;font-size:clamp(10px,1.1vw,14px);letter-spacing:.08em}.tab.active{background:#341519;border-color:#a92b33;color:#fff}
+.main{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:2vw;align-items:center}
+.gauge{position:relative;aspect-ratio:1/1;max-height:54vh;width:min(100%,54vh);margin:auto;border-radius:50%;background:radial-gradient(circle,#111a25 0 56%,#0b1119 57% 68%,#202b39 69% 70%,#080c12 71%);box-shadow:inset 0 0 30px #000,0 15px 35px #0008;border:1px solid #263241}
+.gauge:before{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid #263241}
+.gauge svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-130deg)}.track{fill:none;stroke:#293443;stroke-width:8;stroke-linecap:round;stroke-dasharray:76 24}.progress{fill:none;stroke:var(--red);stroke-width:8;stroke-linecap:round;stroke-dasharray:0 100;filter:drop-shadow(0 0 5px #e33b4388);transition:stroke-dasharray .3s}
+.gcenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.value{font-size:clamp(38px,6.3vw,86px);font-weight:300;letter-spacing:-.06em;line-height:1}.unit{font-size:clamp(11px,1.25vw,16px);color:var(--muted);letter-spacing:.18em;margin-top:7px}.glabel{position:absolute;top:23%;width:100%;text-align:center;color:#aeb8c5;font-size:clamp(10px,1.1vw,14px);letter-spacing:.22em}.subvalue{font-size:clamp(10px,1.1vw,14px);color:var(--muted);margin-top:14px}.center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2vh}.speed{font-size:clamp(68px,12vw,156px);font-weight:250;letter-spacing:-.08em;line-height:.9;text-shadow:0 0 25px #ffffff16}.speedunit{font-size:clamp(12px,1.4vw,17px);letter-spacing:.32em;color:#aab5c2}.gear{margin-top:1.2vh;border:1px solid #394656;background:#121b26;border-radius:7px;padding:8px 22px;font-size:clamp(15px,2vw,25px);font-weight:700}.gear small{font-size:10px;color:var(--muted);font-weight:400;margin-left:8px;letter-spacing:.15em}
+.metrics{height:15%;display:grid;grid-template-columns:repeat(5,1fr);gap:1vw}.metric{background:linear-gradient(145deg,#121b26,#0d131c);border:1px solid #273342;border-radius:7px;padding:1.2vh 1.2vw;display:flex;flex-direction:column;justify-content:center;min-width:0}.metric .name{font-size:clamp(9px,1vw,12px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}.metric .num{font-size:clamp(16px,2vw,25px);margin-top:7px;font-weight:500;white-space:nowrap}.metric .num em{font-size:.55em;color:var(--muted);font-style:normal;margin-left:3px}.bottom{height:4%;display:flex;justify-content:space-between;align-items:center;color:#657181;font-size:clamp(9px,.9vw,11px);letter-spacing:.1em}.warning{color:var(--amber)}
+/* ---- Home ---- */
+.home-main{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:1.5vw;align-items:stretch}
+.hcol{display:flex;flex-direction:column;gap:1.2vh;justify-content:center}
+.hstat{background:linear-gradient(145deg,#121b26,#0d131c);border:1px solid #273342;border-radius:10px;padding:1.4vh 1.2vw}
+.hstat .name{font-size:clamp(9px,1vw,12px);color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.hstat .num{font-size:clamp(22px,2.6vw,34px);font-weight:300;margin-top:4px}
+.hstat .num em{font-size:.5em;color:var(--muted);font-style:normal;margin-left:3px}
+.hspeed{font-size:clamp(56px,7.5vw,96px);font-weight:200;letter-spacing:-.06em;line-height:1;text-align:center}
+.hspeed small{display:block;font-size:clamp(10px,1.1vw,13px);letter-spacing:.3em;color:var(--muted);font-weight:400;margin-top:6px}
+.stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 62%,color-mix(in srgb,var(--accent) 22%,transparent) 0,transparent 65%);border:1px solid #223040;border-radius:14px;overflow:hidden;padding:1vh 1vw}
+.stage .carname{font-size:clamp(15px,2vw,24px);font-weight:700;letter-spacing:.14em}
+.stage .carsub{font-size:clamp(10px,1.1vw,13px);color:var(--muted);letter-spacing:.22em;margin-top:4px}
+.stage .carwrap{width:100%;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.stage .carwrap svg{width:100%;height:100%}
+.stage .glowbar{height:3px;width:70%;border-radius:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 14px var(--accent);margin-top:6px}
+.home-bottom{display:flex;gap:1vw;align-items:stretch;height:13%}
+.apps{display:flex;gap:8px}
+.appbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:74px;background:#111823;border:1px solid #2a3544;border-radius:10px;color:#c6d0db;font-size:clamp(9px,1vw,11px);letter-spacing:.06em;cursor:pointer}
+.appbtn .ic{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff}
+.mediabar{flex:1;background:#111823;border:1px solid #2a3544;border-radius:10px;display:flex;align-items:center;gap:1vw;padding:0 1.2vw;color:var(--muted);font-size:clamp(10px,1.1vw,13px)}
+.mediabar .play{width:38px;height:38px;border-radius:50%;border:1px solid #3a4a5e;background:#1a2432;color:#fff;font-size:15px;cursor:pointer;flex:0 0 38px}
+/* ---- Seletor de carro ---- */
+.carlayout{flex:1;min-height:0;display:grid;grid-template-columns:1.25fr 1fr;gap:1.5vw}
+.cardgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;overflow-y:auto;padding-right:4px;align-content:start}
+.carcard{background:#111823;border:2px solid #2a3544;border-radius:12px;padding:10px;cursor:pointer}
+.carcard.sel{border-color:var(--accent);background:#16202e}
+.carcard svg{width:100%;height:auto}
+.carcard .cname{font-size:clamp(11px,1.2vw,14px);font-weight:700;margin-top:6px}
+.carcard .csub{font-size:clamp(9px,1vw,11px);color:var(--muted)}
+.preview{background:radial-gradient(ellipse at 50% 60%,color-mix(in srgb,var(--accent) 18%,transparent) 0,transparent 65%);border:1px solid #223040;border-radius:14px;padding:1.2vh 1.2vw;display:flex;flex-direction:column;gap:1.2vh}
+.preview .carwrap{flex:1;min-height:0;display:flex;align-items:center}
+.preview .carwrap svg{width:100%;height:100%}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.swatch{width:34px;height:34px;border-radius:50%;border:2px solid #394656;cursor:pointer}
+.swatch.sel{border-color:#fff;box-shadow:0 0 0 2px var(--accent)}
+.btn{border:1px solid #2a3544;background:#1a2432;color:#fff;padding:11px 20px;border-radius:8px;font-size:clamp(11px,1.2vw,14px);letter-spacing:.08em;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent)}
+.btnrow{display:flex;gap:10px}
+/* ---- Diagnóstico / Gráficos ---- */
+.diaglayout{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1.2fr;gap:1.5vw}
+.panel{background:linear-gradient(145deg,#121b26,#0d131c);border:1px solid #273342;border-radius:12px;padding:1.4vh 1.2vw;display:flex;flex-direction:column;gap:1vh;min-height:0}
+.panel h3{margin:0;font-size:clamp(12px,1.3vw,15px);letter-spacing:.14em}
+.panel .hint{font-size:clamp(10px,1.05vw,12px);color:var(--muted);line-height:1.5}
+.dtc-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.dtc{background:#0d131c;border:1px solid #2a3544;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
+.dtc b{font-size:clamp(14px,1.6vw,18px);letter-spacing:.06em}
+.dtc span{font-size:clamp(10px,1.05vw,12px);color:var(--muted)}
+.dtc.ok{border-color:#1f4d33}.dtc.ok b{color:var(--green)}
+.sysrow{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e2a38;padding:9px 2px}
+.sysrow:last-child{border-bottom:none}
+.sysrow .sname{font-size:clamp(11px,1.2vw,14px)}
+.sysrow .sname small{display:block;color:var(--muted);font-size:clamp(9px,1vw,11px)}
+.sysrow .sval{font-size:clamp(14px,1.6vw,19px);font-weight:500;white-space:nowrap}
+.graphs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1vw;flex:1;min-height:0}
+.gpanel{background:linear-gradient(145deg,#121b26,#0d131c);border:1px solid #273342;border-radius:12px;padding:1vh 1vw;display:flex;flex-direction:column;min-height:0}
+.gpanel .ghead{display:flex;justify-content:space-between;align-items:baseline}
+.gpanel .gname{font-size:clamp(10px,1.1vw,13px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.gpanel .gval{font-size:clamp(16px,2vw,24px);font-weight:300}
+.gpanel canvas{flex:1;min-height:0;width:100%}
+@media(max-aspect-ratio:1.45/1){.main{gap:1vw}.gauge{max-height:43vh}.metrics{grid-template-columns:repeat(3,1fr);height:auto}.metric:nth-child(n+4){display:none}.content{gap:1vh}.tabs .tab{padding:7px 10px}.home-main{grid-template-columns:1fr 1.2fr 1fr}}
+</style></head>
+<body><div class="app" id="app">
+<nav class="rail">
+<div class="logo">JVC</div>
+<button class="navbtn active" data-screen="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>HOME</button>
+<button class="navbtn" data-screen="cockpit"><svg viewBox="0 0 24 24"><path d="M12 20a8 8 0 1 1 8-8"/><path d="M12 12l4-4"/><circle cx="12" cy="12" r="1.6"/></svg>COCKPIT</button>
+<button class="navbtn" data-screen="diag"><svg viewBox="0 0 24 24"><path d="M14 7l3 3-8 8H6v-3l8-8z"/><path d="M13 8l3 3"/></svg>DIAG.</button>
+<button class="navbtn" data-screen="graphs"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M4 16l4-6 4 3 5-8"/></svg>GRÁFICOS</button>
+<button class="navbtn" data-screen="car"><svg viewBox="0 0 24 24"><path d="M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2a2 2 0 0 1 1.9 1.5L20 16"/><path d="M3 16h18v3h-2.5M3 19h2.5"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="16.5" cy="18" r="1.6"/></svg>CARRO</button>
+</nav>
+<div class="content">
+<header class="top"><div class="brand">JETTA <span>VIRTUAL</span> COCKPIT</div><div class="status"><span><i class="dot"></i><b id="connection">SEM CONEXÃO</b></span><span id="clock">--:--</span><span id="dateLine"></span><span id="voltageTop">-- V</span></div></header>
+
+<!-- ============ HOME ============ -->
+<section class="screen active" id="screen-home">
+<div class="home-main">
+<div class="hcol">
+<div class="hspeed"><span id="hSpeed">---</span><small>KM/H</small></div>
+<div class="hstat"><div class="name">Rotação</div><div class="num"><span id="hRpm">--</span><em>rpm</em></div></div>
+<div class="hstat"><div class="name">Pressão do turbo*</div><div class="num"><span id="hBoost">--</span><em>bar*</em></div></div>
+</div>
+<div class="stage">
+<div class="carname" id="carName">JETTA 2.0 TSI</div>
+<div class="carsub" id="carSub">MK6 • 2011/2012</div>
+<div class="carwrap" id="homeCar"></div>
+<div class="glowbar"></div>
+</div>
+<div class="hcol">
+<div class="hstat"><div class="name">Água do motor</div><div class="num"><span id="hCoolant">--</span><em>°C</em></div></div>
+<div class="hstat"><div class="name">Carga do motor</div><div class="num"><span id="hLoad">--</span><em>%</em></div></div>
+<div class="hstat"><div class="name">Ar de admissão</div><div class="num"><span id="hIntake">--</span><em>°C</em></div></div>
+<div class="hstat"><div class="name">Bateria</div><div class="num"><span id="hVolt">--</span><em>V</em></div></div>
+</div>
+</div>
+<div class="home-bottom">
+<div class="apps">
+<button class="appbtn" data-app="com.waze"><span class="ic" style="background:#33ccff">W</span>Waze</button>
+<button class="appbtn" data-app="com.google.android.apps.maps"><span class="ic" style="background:#34a853">M</span>Maps</button>
+<button class="appbtn" data-app="com.spotify.music"><span class="ic" style="background:#1db954">S</span>Spotify</button>
+<button class="appbtn" data-app="com.google.android.apps.youtube.music"><span class="ic" style="background:#ff0000">Y</span>YT Music</button>
+</div>
+<div class="mediabar"><button class="play" id="btnPlay">▶</button><span>Nenhuma música tocando — toque em um app para abrir.</span></div>
+</div>
+</section>
+
+<!-- ============ COCKPIT (visual v0.1 preservado) ============ -->
+<section class="screen" id="screen-cockpit">
+<nav class="tabs"><button class="tab active" data-mode="street">STREET</button><button class="tab" data-mode="sport">SPORT</button><button class="tab" data-mode="engine">ENGINE</button></nav>
+<main class="main">
+<section class="gauge"><div class="glabel" id="leftLabel">ROTAÇÃO DO MOTOR</div><svg viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="78" pathLength="100"/><circle class="progress" id="leftProgress" cx="100" cy="100" r="78" pathLength="100"/></svg><div class="gcenter"><div class="value" id="leftValue">--</div><div class="unit" id="leftUnit">× 1000 RPM</div><div class="subvalue" id="leftSub">SEM DADOS</div></div></section>
+<section class="center"><div class="speed" id="speed">---</div><div class="speedunit">KM/H</div><div class="gear" id="gear">-- <small>MARCHA*</small></div><div class="subvalue" id="centerSub">AGUARDANDO DADOS</div></section>
+<section class="gauge"><div class="glabel" id="rightLabel">PRESSÃO DO TURBO</div><svg viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="78" pathLength="100"/><circle class="progress" id="rightProgress" cx="100" cy="100" r="78" pathLength="100"/></svg><div class="gcenter"><div class="value" id="rightValue">--</div><div class="unit" id="rightUnit">BAR*</div><div class="subvalue" id="rightSub">VALOR ESTIMADO*</div></div></section>
+</main>
+<section class="metrics" id="metrics"><div class="metric"><div class="name">Água do motor</div><div class="num" id="coolant">--<em>°C</em></div></div><div class="metric"><div class="name">Ar de admissão</div><div class="num" id="intake">--<em>°C</em></div></div><div class="metric"><div class="name">Carga do motor</div><div class="num" id="load">--<em>%</em></div></div><div class="metric"><div class="name">Bateria</div><div class="num" id="voltageMetric">--<em>V</em></div></div><div class="metric"><div class="name">Consumo médio</div><div class="num" id="consumption">--<em>km/l*</em></div></div></section>
+</section>
+
+<!-- ============ DIAGNÓSTICO ============ -->
+<section class="screen" id="screen-diag">
+<div class="diaglayout">
+<div class="panel">
+<h3>SCANNER DE FALHAS</h3>
+<div class="hint">Lê os códigos de falha (DTC) armazenados na ECU via OBD2. Somente leitura: o app não apaga códigos.</div>
+<div class="btnrow"><button class="btn primary" id="btnScan">INICIAR LEITURA</button></div>
+<div class="dtc-list" id="dtcList"><div class="dtc ok"><b>—</b><span>Toque em INICIAR LEITURA com o adaptador conectado.</span></div></div>
+</div>
+<div class="panel">
+<h3>SISTEMAS</h3>
+<div class="sysrow"><div class="sname">Sistema elétrico<small>Tensão medida pelo adaptador</small></div><div class="sval" id="sysVolt">-- V</div></div>
+<div class="sysrow"><div class="sname">Arrefecimento<small>Temperatura do líquido</small></div><div class="sval" id="sysCoolant">-- °C</div></div>
+<div class="sysrow"><div class="sname">Admissão / Turbo<small>MAP • Ar de admissão • Turbo*</small></div><div class="sval" id="sysMap">-- kPa</div></div>
+<div class="sysrow"><div class="sname">Motor<small>Rotação • Carga • Acelerador</small></div><div class="sval" id="sysLoad">-- %</div></div>
+<div class="hint">Valores marcados com * são estimados. Itens sem fonte no OBD2 genérico aparecem como "--" — sem valor inventado.</div>
+</div>
+</div>
+</section>
+
+<!-- ============ GRÁFICOS ============ -->
+<section class="screen" id="screen-graphs">
+<div class="graphs">
+<div class="gpanel"><div class="ghead"><span class="gname">Rotação</span><span class="gval"><span id="gRpmV">--</span> rpm</span></div><canvas id="gRpm"></canvas></div>
+<div class="gpanel"><div class="ghead"><span class="gname">Velocidade</span><span class="gval"><span id="gSpeedV">--</span> km/h</span></div><canvas id="gSpeed"></canvas></div>
+<div class="gpanel"><div class="ghead"><span class="gname">Água do motor</span><span class="gval"><span id="gCoolV">--</span> °C</span></div><canvas id="gCool"></canvas></div>
+<div class="gpanel"><div class="ghead"><span class="gname">Pressão MAP</span><span class="gval"><span id="gMapV">--</span> kPa</span></div><canvas id="gMap"></canvas></div>
+</div>
+</section>
+
+<!-- ============ MEU CARRO ============ -->
+<section class="screen" id="screen-car">
+<div class="carlayout">
+<div class="cardgrid" id="carGrid"></div>
+<div class="preview">
+<div class="carname" id="prevName">JETTA 2.0 TSI</div>
+<div class="carsub" id="prevSub">MK6 • 2011/2012</div>
+<div class="carwrap" id="prevCar"></div>
+<div class="swatches" id="swatches"></div>
+<div class="btnrow"><button class="btn primary" id="btnApplyCar">APLICAR NA TELA INICIAL</button></div>
+</div>
+</div>
+</section>
+
+<footer class="bottom"><span>JETTA 2.0 TSI • MK6</span><span class="warning" id="footNote">*VALOR ESTIMADO • O PAINEL ORIGINAL É A REFERÊNCIA</span><span>APP V0.4 • INTERFACE V0.1</span></footer>
+</div>
+</div><script>
+const $=id=>document.getElementById(id);
+let mode='street', live=null, connState='DISCONNECTED';
+function tick(){const d=new Date();$('clock').textContent=d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});$('dateLine').textContent=d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'});}tick();setInterval(tick,1000);
+function fmt(v,digits){return (v===null||v===undefined)?'--':Number(v).toFixed(digits);}
+function num(id,v,unit){$(id).innerHTML=fmt(v,0)+'<em>'+unit+'</em>';}
+function shade(hex,pct){const n=parseInt(hex.slice(1),16);let r=(n>>16)+Math.round(255*pct/100),g=((n>>8)&255)+Math.round(255*pct/100),b=(n&255)+Math.round(255*pct/100);r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));return '#'+((r<<16)|(g<<8)|b).toString(16).padStart(6,'0');}
+
+/* ---------- Modelos de carro (silhuetas SVG, vista lateral) ---------- */
+const CARS={
+jetta:{name:'JETTA 2.0 TSI',sub:'MK6 • 2011/2012',body:'M18,132 C14,118 20,108 38,104 L118,98 C142,72 178,62 224,60 L296,60 C328,62 352,80 368,96 L428,100 C446,104 452,116 448,132 L448,134 L18,134 Z',glass:'M140,96 L188,70 L292,68 L348,94 L140,96 Z',wheels:[110,370],wr:27,details:'<path d="M206,102 L206,130 M306,100 L306,130" stroke="#00000055" stroke-width="2"/><rect x="216" y="104" width="18" height="4" rx="2" fill="#00000055"/><rect x="282" y="104" width="18" height="4" rx="2" fill="#00000055"/><path d="M20,110 L44,108 L44,116 L22,118 Z" fill="#ffe9a8" opacity=".9"/><path d="M436,108 L448,110 L448,118 L436,116 Z" fill="#ff5a5a" opacity=".9"/>'},
+hatch:{name:'GOLF GTI',sub:'HATCH • ESPORTIVO',body:'M20,132 C16,118 22,108 40,104 L116,98 C140,70 180,60 228,58 L310,58 C348,60 392,66 420,84 C440,96 450,112 448,132 L448,134 L20,134 Z',glass:'M138,96 L188,68 L300,66 L372,88 L372,96 L138,96 Z',wheels:[112,368],wr:27,details:'<path d="M210,102 L210,130 M300,100 L300,130" stroke="#00000055" stroke-width="2"/><path d="M22,110 L46,108 L46,116 L24,118 Z" fill="#ffe9a8" opacity=".9"/><path d="M434,108 L446,110 L446,118 L434,116 Z" fill="#ff5a5a" opacity=".9"/>'},
+suv:{name:'TIGUAN',sub:'SUV • FAMÍLIA',body:'M18,132 C14,116 20,104 40,100 L110,94 C130,66 168,52 224,50 L316,50 C356,52 384,70 398,92 L432,98 C448,102 452,116 448,132 L448,134 L18,134 Z',glass:'M138,92 L180,62 L306,60 L368,90 L138,92 Z',wheels:[112,366],wr:30,details:'<path d="M210,96 L210,130 M306,94 L306,130" stroke="#00000055" stroke-width="2"/><path d="M22,106 L48,104 L48,112 L24,114 Z" fill="#ffe9a8" opacity=".9"/><path d="M432,106 L446,108 L446,116 L432,114 Z" fill="#ff5a5a" opacity=".9"/>'},
+pickup:{name:'AMAROK',sub:'PICAPE • DIESEL',body:'M18,132 C14,116 20,104 40,100 L108,94 C128,68 162,56 208,54 L288,54 C312,56 326,72 332,92 L440,96 C450,100 452,116 448,132 L448,134 L18,134 Z',glass:'M140,92 L180,64 L280,62 L318,90 L140,92 Z',wheels:[110,372],wr:29,details:'<path d="M332,94 L332,130" stroke="#00000055" stroke-width="2"/><path d="M22,106 L48,104 L48,112 L24,114 Z" fill="#ffe9a8" opacity=".9"/><path d="M434,106 L446,108 L446,116 L434,114 Z" fill="#ff5a5a" opacity=".9"/>'},
+classic:{name:'OPALA',sub:'CLÁSSICO • 1975',body:'M16,130 C14,116 20,106 40,102 L150,96 C168,74 196,66 240,64 L320,64 C352,66 372,82 384,96 L436,100 C448,104 452,116 448,130 L448,132 L16,132 Z',glass:'M168,94 L200,72 L310,70 L362,92 L168,94 Z',wheels:[108,372],wr:26,details:'<rect x="14" y="124" width="440" height="5" rx="2" fill="#d7dde3" opacity=".8"/><path d="M212,98 L212,128 M302,98 L302,128" stroke="#00000055" stroke-width="2"/><path d="M20,108 L46,106 L46,114 L22,116 Z" fill="#ffe9a8" opacity=".9"/><path d="M434,106 L446,108 L446,116 L434,114 Z" fill="#ff5a5a" opacity=".9"/>'}
+};
+const COLORS=[
+{name:'Preto',hex:'#23272c'},{name:'Prata',hex:'#c0c6cc'},{name:'Branco',hex:'#eef1f3'},
+{name:'Vermelho',hex:'#c0392b'},{name:'Azul',hex:'#2471a3'},{name:'Verde',hex:'#1e8449'},
+{name:'Amarelo',hex:'#d4ac0d'},{name:'Cinza',hex:'#5d6d7e'}];
+let selModel=localStorage.getItem('jetta_car_model')||'jetta';
+let selColor=localStorage.getItem('jetta_car_color')||'#c0c6cc';
+let pickModel=selModel, pickColor=selColor;
+function carSVG(model,color,uid){
+  const c=CARS[model]||CARS.jetta, dark=shade(color,-38);
+  const wheel=(cx)=>'<g><circle cx="'+cx+'" cy="132" r="'+c.wr+'" fill="#14171b"/><circle cx="'+cx+'" cy="132" r="'+(c.wr-3)+'" fill="none" stroke="#2c3138" stroke-width="2"/><circle cx="'+cx+'" cy="132" r="'+(c.wr-11)+'" fill="#cfd6dd"/><circle cx="'+cx+'" cy="132" r="4" fill="#5a636c"/>'+[0,72,144,216,288].map(a=>{const r=a*Math.PI/180,x2=cx+Math.cos(r)*(c.wr-11),y2=132+Math.sin(r)*(c.wr-11);return '<line x1="'+cx+'" y1="132" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="#8b939c" stroke-width="3"/>';}).join('')+'</g>';
+  return '<svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg'+uid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+color+'"/><stop offset=".55" stop-color="'+shade(color,-12)+'"/><stop offset="1" stop-color="'+dark+'"/></linearGradient><linearGradient id="gl'+uid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb6c6"/><stop offset="1" stop-color="#2b3642"/></linearGradient></defs>'
+  +'<ellipse cx="240" cy="160" rx="215" ry="10" fill="#000" opacity=".55"/>'
+  +'<path d="'+c.body+'" fill="url(#bg'+uid+')" stroke="#00000066" stroke-width="1.5"/>'
+  +'<path d="'+c.glass+'" fill="url(#gl'+uid+')" opacity=".95"/>'
+  +'<path d="M20,132 L448,132" stroke="#00000088" stroke-width="3"/>'+c.details
+  +wheel(c.wheels[0])+wheel(c.wheels[1])+'</svg>';
+}
+function applyCar(){
+  document.documentElement.style.setProperty('--car-color',selColor);
+  document.documentElement.style.setProperty('--car-dark',shade(selColor,-38));
+  document.documentElement.style.setProperty('--accent',selColor==='#c0c6cc'||selColor==='#eef1f3'?'#e33b43':selColor);
+  const c=CARS[selModel]||CARS.jetta;
+  $('carName').textContent=c.name;$('carSub').textContent=c.sub;
+  $('homeCar').innerHTML=carSVG(selModel,selColor,'h');
+}
+function renderPicker(){
+  $('carGrid').innerHTML=Object.keys(CARS).map(k=>'<div class="carcard'+(k===pickModel?' sel':'')+'" data-car="'+k+'">'+carSVG(k,pickColor,'c'+k)+'<div class="cname">'+CARS[k].name+'</div><div class="csub">'+CARS[k].sub+'</div></div>').join('');
+  $('swatches').innerHTML=COLORS.map(c=>'<div class="swatch'+(c.hex===pickColor?' sel':'')+'" data-color="'+c.hex+'" title="'+c.name+'" style="background:'+c.hex+'"></div>').join('');
+  $('prevName').textContent=CARS[pickModel].name;$('prevSub').textContent=CARS[pickModel].sub;
+  $('prevCar').innerHTML=carSVG(pickModel,pickColor,'p');
+  document.querySelectorAll('.carcard').forEach(el=>el.addEventListener('click',()=>{pickModel=el.dataset.car;renderPicker();}));
+  document.querySelectorAll('.swatch').forEach(el=>el.addEventListener('click',()=>{pickColor=el.dataset.color;renderPicker();}));
+}
+$('btnApplyCar').addEventListener('click',()=>{
+  selModel=pickModel;selColor=pickColor;
+  localStorage.setItem('jetta_car_model',selModel);localStorage.setItem('jetta_car_color',selColor);
+  applyCar();showScreen('home');
+});
+
+/* ---------- Navegação ---------- */
+function showScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id==='screen-'+name));
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.screen===name));
+  if(name==='graphs')drawGraphs();
+}
+document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>showScreen(b.dataset.screen)));
+
+/* ---------- Atalhos de apps ---------- */
+document.querySelectorAll('.appbtn').forEach(b=>b.addEventListener('click',()=>{
+  if(window.AndroidObd){try{AndroidObd.openApp(b.dataset.app);}catch(e){}}
+}));
+$('btnPlay').addEventListener('click',()=>{if(window.AndroidObd){try{AndroidObd.openApp('com.spotify.music');}catch(e){}}});
+
+/* ---------- Scanner DTC ---------- */
+let scanning=false;
+$('btnScan').addEventListener('click',()=>{
+  if(scanning)return;
+  if(connState!=='CONNECTED'&&connState!=='DEMO'){
+    $('dtcList').innerHTML='<div class="dtc"><b>—</b><span>Conecte ao adaptador OBD2 primeiro (ou ative o modo demonstração).</span></div>';return;
+  }
+  scanning=true;
+  $('dtcList').innerHTML='<div class="dtc"><b>···</b><span>Lendo códigos de falha…</span></div>';
+  if(connState==='DEMO'){setTimeout(()=>window.onDtcsResult(true,[]),1200);return;}
+  if(window.AndroidObd){try{AndroidObd.readDtcs();}catch(e){scanning=false;}}
+});
+window.onDtcsResult=function(connected,codes){
+  scanning=false;
+  if(!connected){$('dtcList').innerHTML='<div class="dtc"><b>—</b><span>Sem conexão com o adaptador.</span></div>';return;}
+  if(!codes||codes.length===0){$('dtcList').innerHTML='<div class="dtc ok"><b>OK</b><span>Nenhum código de falha armazenado.</span></div>';return;}
+  $('dtcList').innerHTML=codes.map(c=>'<div class="dtc"><b>'+c+'</b><span>Código armazenado na ECU</span></div>').join('');
+};
+
+/* ---------- Gráficos ---------- */
+const HIST_MAX=120, hist={rpm:[],speed:[],coolant:[],map:[]};
+function drawChart(id,series,color,min,max){
+  const cv=$(id);if(!cv)return;
+  const w=cv.clientWidth,h=cv.clientHeight;if(w<10||h<10)return;
+  if(cv.width!==w)cv.width=w;if(cv.height!==h)cv.height=h;
+  const ctx=cv.getContext('2d');ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle='#223040';ctx.lineWidth=1;
+  for(let i=1;i<4;i++){ctx.beginPath();ctx.moveTo(0,h*i/4);ctx.lineTo(w,h*i/4);ctx.stroke();}
+  if(series.length<2)return;
+  ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();
+  series.forEach((v,i)=>{const x=i/(HIST_MAX-1)*w,y=h-((Math.min(max,Math.max(min,v))-min)/(max-min))*h;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.stroke();
+}
+function drawGraphs(){
+  drawChart('gRpm',hist.rpm,'#e33b43',0,7000);
+  drawChart('gSpeed',hist.speed,'#59c9e8',0,200);
+  drawChart('gCool',hist.coolant,'#e6b34d',0,130);
+  drawChart('gMap',hist.map,'#3ddc84',0,250);
+}
+function pushHist(d){
+  [['rpm',d.rpm],['speed',d.speedKmh],['coolant',d.coolantC],['map',d.mapKpa]].forEach(([k,v])=>{
+    if(v!==null&&v!==undefined){hist[k].push(v);if(hist[k].length>HIST_MAX)hist[k].shift();}
+  });
+  $('gRpmV').textContent=fmt(d.rpm,0);$('gSpeedV').textContent=fmt(d.speedKmh,0);
+  $('gCoolV').textContent=fmt(d.coolantC,0);$('gMapV').textContent=fmt(d.mapKpa,0);
+  if($('screen-graphs').classList.contains('active'))drawGraphs();
+}
+
+/* ---------- Render principal ---------- */
+function render(){
+  const d=live, demo=!!(d&&d.isDemo);
+  $('speed').textContent=(d&&d.speedKmh!==null&&d.speedKmh!==undefined)?String(d.speedKmh).padStart(3,'0'):'---';
+  $('centerSub').textContent=demo?'VELOCIDADE SIMULADA • DEMO':(d?'VELOCIDADE':'AGUARDANDO DADOS');
+  let L,R;
+  if(mode==='engine'){
+    L={label:'CARGA DO MOTOR',value:fmt(d&&d.loadPct,0),unit:'%',sub:d?'CARGA DO MOTOR':'SEM DADOS',pct:(d&&d.loadPct!=null)?d.loadPct:0};
+    R={label:'PRESSÃO MAP',value:fmt(d&&d.mapKpa,0),unit:'KPA',sub:d?'PRESSÃO DO COLETOR':'SEM DADOS',pct:(d&&d.mapKpa!=null)?Math.min(100,d.mapKpa/2.5):0};
+  }else{
+    L={label:'ROTAÇÃO DO MOTOR',value:(d&&d.rpm!=null)?(d.rpm/1000).toFixed(1):'--',unit:'× 1000 RPM',sub:demo?'MOTOR • DEMONSTRAÇÃO':(d?'ROTAÇÃO':'SEM DADOS'),pct:(d&&d.rpm!=null)?Math.min(100,d.rpm/70):0};
+    R={label:'PRESSÃO DO TURBO',value:fmt(d&&d.boostBar,1),unit:'BAR*',sub:'VALOR ESTIMADO*',pct:(d&&d.boostBar!=null)?Math.min(100,Math.max(0,(d.boostBar+1)/2.5*100)):0};
+  }
+  $('leftLabel').textContent=L.label;$('leftValue').textContent=L.value;$('leftUnit').textContent=L.unit;$('leftSub').textContent=L.sub;$('leftProgress').style.strokeDasharray=L.pct+' 100';
+  $('rightLabel').textContent=R.label;$('rightValue').textContent=R.value;$('rightUnit').textContent=R.unit;$('rightSub').textContent=R.sub;$('rightProgress').style.strokeDasharray=R.pct+' 100';
+  if(d){
+    num('coolant',d.coolantC,'°C');num('intake',d.intakeC,'°C');num('load',d.loadPct,'%');
+    $('voltageMetric').innerHTML=fmt(d.voltage,1)+'<em>V</em>';
+    $('voltageTop').textContent=(d.voltage!=null)?d.voltage.toFixed(1)+' V':'-- V';
+    $('hSpeed').textContent=(d.speedKmh!=null)?String(d.speedKmh).padStart(3,'0'):'---';
+    $('hRpm').textContent=fmt(d.rpm,0);$('hBoost').textContent=fmt(d.boostBar,1);
+    $('hCoolant').textContent=fmt(d.coolantC,0);$('hLoad').textContent=fmt(d.loadPct,0);
+    $('hIntake').textContent=fmt(d.intakeC,0);$('hVolt').textContent=fmt(d.voltage,1);
+    $('sysVolt').textContent=fmt(d.voltage,1)+' V';$('sysCoolant').textContent=fmt(d.coolantC,0)+' °C';
+    $('sysMap').textContent=fmt(d.mapKpa,0)+' kPa';$('sysLoad').textContent=fmt(d.loadPct,0)+' %';
+  }
+  $('footNote').textContent=demo?'*DADOS SIMULADOS PARA DEMONSTRAÇÃO':'*VALOR ESTIMADO • O PAINEL ORIGINAL É A REFERÊNCIA';
+}
+window.updateLiveData=function(data){live=data;pushHist(data);render();};
+window.setConnectionState=function(state){
+  connState=state;const app=$('app'),el=$('connection');
+  app.classList.remove('demo','connected');
+  if(state==='CONNECTED'){el.textContent='CONECTADO • OBD2';app.classList.add('connected');}
+  else if(state==='DEMO'){el.textContent='MODO DEMONSTRAÇÃO';app.classList.add('demo');}
+  else if(state==='CONNECTING'){el.textContent='CONECTANDO…';}
+  else if(state==='ERROR'){el.textContent='ERRO DE CONEXÃO';}
+  else{el.textContent='SEM CONEXÃO';}
+  render();
+};
+function setMode(m){
+  mode=m;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
+  render();
+  if(window.AndroidObd){try{AndroidObd.onModeChanged(m);}catch(e){}}
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+applyCar();renderPicker();render();
+</script></body></html>

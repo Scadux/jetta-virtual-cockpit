@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080B10">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Botão discreto de configurações (adaptador, demo, status).
+         Fica sobre a WebView, no canto inferior direito. -->
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        android:alpha="0.55"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/settings"
+        android:src="@android:drawable/ic_menu_preferences" />
+</FrameLayout>
