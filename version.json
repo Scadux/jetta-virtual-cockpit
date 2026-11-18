@@ -1,1 +1,6 @@
-{"versionCode":9,"versionName":"0.8.0","apkUrl":"https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.8.0/jetta-virtual-cockpit-v0.8.0-debug.apk","notes":"v0.8.0: novos dados OBD2 (combustível, óleo, pedal, pressões, trims, VIN) e grade de sensores na aba Engine com alerta amarelo/vermelho."}
+{
+  "versionCode": 11,
+  "versionName": "0.10.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.10.0/jetta-virtual-cockpit-v0.10.0-debug.apk",
+  "notes": "v0.10.0: diagnóstico completo — escaneamento em 6 passos (luz de injeção, monitores de prontidão, falhas armazenadas/pendentes/permanentes, quadro congelado, dados do veículo) e 206 códigos com causas prováveis. Inclui os mostradores de ponteiro da v0.9.0."
+}
