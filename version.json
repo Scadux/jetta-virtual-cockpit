@@ -1,6 +1,6 @@
 {
-  "versionCode": 24,
-  "versionName": "0.18.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.18.0/jetta-virtual-cockpit-v0.18.0-debug.apk",
-  "changelog": "Traseira do Jetta redesenhada (linhas mais limpas, sem o rabisco nas lanternas e na tampa) e cor preta mais legível; Golf GTI MK7 em 3D com 16 ângulos."
+  "versionCode": 25,
+  "versionName": "0.19.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.19.0/jetta-virtual-cockpit-v0.19.0-debug.apk",
+  "notes": "Visão fixa (frente 3/4, sem girar) + carro maior na Home; estilo suave com vidro escuro (referência: Amarok); preto com lanternas vermelhas; 9 carros novos em 3D (Amarok, Tiguan, Polo, Onix, Corolla, Civic, Mustang, Fusca, Kombi)."
 }
