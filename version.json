@@ -1,6 +1,6 @@
 {
-  "versionCode": 43,
-  "versionName": "0.29.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.29.1/jetta-virtual-cockpit-v0.29.1-debug.apk",
-  "notes": "Correcao do tema Minha Foto: a foto agora realmente vira o fundo da Home e do Cockpit (a forma como a foto era passada para o fundo nao funcionava na WebView da multimidia). Fotos grandes agora carregam em passos para nao travar, e a tela avisa quando a foto nao pode ser usada (ex.: formato HEIC do iPhone) em vez de falhar em silencio."
+  "versionCode": 44,
+  "versionName": "0.29.2",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.29.2/jetta-virtual-cockpit-v0.29.2-debug.apk",
+  "notes": "Fotos HEIC (iPhone) agora funcionam no tema Minha Foto: o app converte para JPG sozinho ao escolher a foto, sem precisar converter antes. Fotos em retrato entram na orientacao certa."
 }
