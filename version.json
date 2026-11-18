@@ -1,6 +1,6 @@
 {
-  "versionCode": 20,
-  "versionName": "0.14.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.14.0/jetta-virtual-cockpit-v0.14.0-debug.apk",
-  "changelog": "Cenários realistas na Home: 6 fotos (Garagem, Pista, Cidade, Estrada, Serra, Praia) com parallax ao girar o carro + tema Automático dia/noite."
+  "versionCode": 21,
+  "versionName": "0.15.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.15.0/jetta-virtual-cockpit-v0.15.0-debug.apk",
+  "changelog": "Carro estacionado na estrada nos cenários + arrastar para trocar temas + rolagem da tela Carro."
 }
