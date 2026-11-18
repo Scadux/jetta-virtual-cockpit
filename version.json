@@ -1,6 +1,6 @@
 {
-  "versionCode": 28,
-  "versionName": "0.19.3",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.19.3/jetta-virtual-cockpit-v0.19.3-debug.apk",
-  "notes": "Preto de verdade: os 11 carros 3D ganharam frames pretos pré-renderizados (carroceria preta, lanterna vermelha). O filtro CSS não servia para o preto — escurecer deixava o carro vermelho e dessaturar matava a lanterna."
+  "versionCode": 29,
+  "versionName": "0.20.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.20.0/jetta-virtual-cockpit-v0.20.0-debug.apk",
+  "notes": "Farol automático: das 18h às 6h o carro acende o farol (lente acesa + halo + luz no chão) e a lanterna vermelha. A troca é automática, sem precisar reiniciar o app."
 }
