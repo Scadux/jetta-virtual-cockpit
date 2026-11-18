@@ -1,1 +1,6 @@
-{"versionCode":15,"versionName":"0.12.2","apkUrl":"https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.12.2/jetta-virtual-cockpit-v0.12.2-debug.apk","notes":"v0.12.2: refaz a lista de carros com flexbox (o WebView da K200IN não dimensionava as linhas da grade com imagens); cartões maiores (miniatura de 120 px), imagem no mesmo padrão do preview, sem lazy loading. Layout validado por renderização antes de publicar."}
+{
+  "versionCode": 16,
+  "versionName": "0.12.3",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.12.3/jetta-virtual-cockpit-v0.12.3-debug.apk",
+  "changelog": "Cor preta ajustada: detalhes do carro visíveis (vidros, rodas, vincos)."
+}
