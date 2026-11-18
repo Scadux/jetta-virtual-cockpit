@@ -1,6 +1,6 @@
 {
-  "versionCode": 26,
-  "versionName": "0.19.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.19.1/jetta-virtual-cockpit-v0.19.1-debug.apk",
-  "notes": "Estilo forte de volta: contorno preto marcado e mais definição em todos os carros (o estilo suave da v0.19.0 ficou lavado na tela da multimídia). Vidro escuro e visão fixa mantidos."
+  "versionCode": 27,
+  "versionName": "0.19.2",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.19.2/jetta-virtual-cockpit-v0.19.2-debug.apk",
+  "notes": "Estilo foto de volta (o da v0.11): sem contorno preto e sem faixas de posterize — só o render 3D liso, como foto de estúdio. Vidro escuro, visão fixa e carro maior mantidos."
 }
