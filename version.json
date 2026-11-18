@@ -1,6 +1,6 @@
 {
-  "versionCode": 30,
-  "versionName": "0.21.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.21.0/jetta-virtual-cockpit-v0.21.0-debug.apk",
-  "notes": "Botão Conectar com OBD2: agora dá para conectar direto no Cockpit e no Diagnóstico, sem abrir o menu de configurações. O status no topo da tela também é tocável (conecta/desconecta)."
+  "versionCode": 31,
+  "versionName": "0.22.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.22.0/jetta-virtual-cockpit-v0.22.0-debug.apk",
+  "notes": "Atalhos da Home com os emblemas reais dos apps (Waze, Maps, Spotify e Deezer) no lugar das letras. O YouTube Music foi trocado pelo Deezer."
 }
