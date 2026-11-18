@@ -1,6 +1,6 @@
 {
-  "versionCode": 31,
-  "versionName": "0.22.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.22.0/jetta-virtual-cockpit-v0.22.0-debug.apk",
-  "notes": "Atalhos da Home com os emblemas reais dos apps (Waze, Maps, Spotify e Deezer) no lugar das letras. O YouTube Music foi trocado pelo Deezer."
+  "versionCode": 32,
+  "versionName": "0.22.1",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.22.1/jetta-virtual-cockpit-v0.22.1-debug.apk",
+  "notes": "Correção: o Deezer agora abre pelo atalho (faltava a permissão de visibilidade do pacote no Android 11+). E quando um app não está instalado na multimídia, o atalho abre a página dele na Play Store para instalar."
 }
