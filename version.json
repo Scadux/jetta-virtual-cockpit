@@ -1,6 +1,6 @@
 {
-  "versionCode": 25,
-  "versionName": "0.19.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.19.0/jetta-virtual-cockpit-v0.19.0-debug.apk",
-  "notes": "Visão fixa (frente 3/4, sem girar) + carro maior na Home; estilo suave com vidro escuro (referência: Amarok); preto com lanternas vermelhas; 9 carros novos em 3D (Amarok, Tiguan, Polo, Onix, Corolla, Civic, Mustang, Fusca, Kombi)."
+  "versionCode": 26,
+  "versionName": "0.19.1",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.19.1/jetta-virtual-cockpit-v0.19.1-debug.apk",
+  "notes": "Estilo forte de volta: contorno preto marcado e mais definição em todos os carros (o estilo suave da v0.19.0 ficou lavado na tela da multimídia). Vidro escuro e visão fixa mantidos."
 }
