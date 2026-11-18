@@ -1,6 +1,6 @@
 {
-  "versionCode": 21,
-  "versionName": "0.15.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.15.0/jetta-virtual-cockpit-v0.15.0-debug.apk",
-  "changelog": "Carro estacionado na estrada nos cenários + arrastar para trocar temas + rolagem da tela Carro."
+  "versionCode": 22,
+  "versionName": "0.16.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.16.0/jetta-virtual-cockpit-v0.16.0-debug.apk",
+  "changelog": "Novos cenários: Neon, Neve, Deserto, Outono, Aurora e Chuva no lugar dos anteriores; Automático agora é Deserto de dia e Aurora à noite."
 }
