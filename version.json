@@ -1,6 +1,6 @@
 {
-  "versionCode": 23,
-  "versionName": "0.17.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.17.0/jetta-virtual-cockpit-v0.17.0-debug.apk",
-  "changelog": "Jetta 3D de verdade: 48 ângulos renderizados do modelo 3D do Jetta A6 em estilo desenho forte, giro duas vezes mais suave (16 quadros por volta); frames com fundo transparente e sombra própria."
+  "versionCode": 24,
+  "versionName": "0.18.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.18.0/jetta-virtual-cockpit-v0.18.0-debug.apk",
+  "changelog": "Traseira do Jetta redesenhada (linhas mais limpas, sem o rabisco nas lanternas e na tampa) e cor preta mais legível; Golf GTI MK7 em 3D com 16 ângulos."
 }
