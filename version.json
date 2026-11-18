@@ -1,6 +1,6 @@
 {
-  "versionCode": 22,
-  "versionName": "0.16.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.16.0/jetta-virtual-cockpit-v0.16.0-debug.apk",
-  "changelog": "Novos cenários: Neon, Neve, Deserto, Outono, Aurora e Chuva no lugar dos anteriores; Automático agora é Deserto de dia e Aurora à noite."
+  "versionCode": 23,
+  "versionName": "0.17.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.17.0/jetta-virtual-cockpit-v0.17.0-debug.apk",
+  "changelog": "Jetta 3D de verdade: 48 ângulos renderizados do modelo 3D do Jetta A6 em estilo desenho forte, giro duas vezes mais suave (16 quadros por volta); frames com fundo transparente e sombra própria."
 }
