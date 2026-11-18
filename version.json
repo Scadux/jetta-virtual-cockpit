@@ -1,6 +1,6 @@
 {
-  "versionCode": 39,
-  "versionName": "0.26.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.26.0/jetta-virtual-cockpit-v0.26.0-debug.apk",
-  "notes": "O tema escolhido (ex.: Costa Neon) agora aparece tambem no Cockpit, nao so na Home: o cenario fica atras dos mostradores e dos cartoes, que mantem o fundo escuro para continuar legiveis. O numero da velocidade ganhou sombra para ficar legivel sobre temas claros."
+  "versionCode": 40,
+  "versionName": "0.27.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.27.0/jetta-virtual-cockpit-v0.27.0-debug.apk",
+  "notes": "Novo estilo Drive Lab no Cockpit (3a aba, ao lado de Street e Engine): mostrador unico grande com arco de giro ciano e ponto luminoso, velocidade no centro, giro e consumo abaixo, e 6 cartoes com barras segmentadas (motor, admissao, bateria, carga, acelerador, MAP). A escolha fica salva. O aviso de luz de injecao acesa so aparece quando uma leitura de diagnostico confirmou."
 }
