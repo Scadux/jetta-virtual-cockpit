@@ -1,6 +1,6 @@
 {
-  "versionCode": 40,
-  "versionName": "0.27.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.27.0/jetta-virtual-cockpit-v0.27.0-debug.apk",
-  "notes": "Novo estilo Drive Lab no Cockpit (3a aba, ao lado de Street e Engine): mostrador unico grande com arco de giro ciano e ponto luminoso, velocidade no centro, giro e consumo abaixo, e 6 cartoes com barras segmentadas (motor, admissao, bateria, carga, acelerador, MAP). A escolha fica salva. O aviso de luz de injecao acesa so aparece quando uma leitura de diagnostico confirmou."
+  "versionCode": 41,
+  "versionName": "0.28.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.28.0/jetta-virtual-cockpit-v0.28.0-debug.apk",
+  "notes": "Novo carro 'Meu Jetta': a foto do seu proprio Jetta, com o fundo removido, no lugar do desenho 3D. Primeiro carro da lista, na tela Carro. A foto aparece na cor real, sem troca de cor e igual de dia e de noite (a foto ja e noturna, com o farol aceso)."
 }
