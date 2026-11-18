@@ -1,6 +1,6 @@
 {
-  "versionCode": 34,
-  "versionName": "0.23.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.23.1/jetta-virtual-cockpit-v0.23.1-debug.apk",
-  "notes": "Correção da barra de mídia: sem a autorização de acesso a notificações, qualquer toque na barra agora abre a tela de ativação (antes o botão ▶ abria o Deezer e a música nunca aparecia). O aviso ficou bem visível na barra e o menu ⚙ mostra se o acesso está ATIVADO ou não."
+  "versionCode": 35,
+  "versionName": "0.24.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.24.0/jetta-virtual-cockpit-v0.24.0-debug.apk",
+  "notes": "Pneus visiveis: os pneus dos carros 3D estavam quase pretos e sumiam na tela da K200IN. Agora sao cinza-escuro legivel nos 11 carros (4 variantes cada). Os frames f0 e os perfis 3D tambem trocaram de WebP para PNG."
 }
