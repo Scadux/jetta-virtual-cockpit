@@ -1,6 +1,6 @@
 {
-  "versionCode": 41,
-  "versionName": "0.28.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.28.0/jetta-virtual-cockpit-v0.28.0-debug.apk",
-  "notes": "Novo carro 'Meu Jetta': a foto do seu proprio Jetta, com o fundo removido, no lugar do desenho 3D. Primeiro carro da lista, na tela Carro. A foto aparece na cor real, sem troca de cor e igual de dia e de noite (a foto ja e noturna, com o farol aceso)."
+  "versionCode": 42,
+  "versionName": "0.29.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.29.0/jetta-virtual-cockpit-v0.29.0-debug.apk",
+  "notes": "Novo tema 'Minha Foto': use qualquer foto da multimidia como fundo da Home e do Cockpit. Na tela Carro, toque no tile Minha Foto (ultimo dos cenarios) e escolha a foto na galeria; ela vira o tema no lugar do atual e fica salva. Toque de novo no tile para trocar a foto."
 }
