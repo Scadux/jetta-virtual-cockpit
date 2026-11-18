@@ -1,6 +1,6 @@
 {
-  "versionCode": 37,
-  "versionName": "0.25.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.25.0/jetta-virtual-cockpit-v0.25.0-debug.apk",
-  "notes": "Home no modelo Rota Launcher + 4 temas novos: faixa superior com relogio e data no centro, mini mostradores (motor, bateria, admissao, carga), temperatura ambiente e caixa de viagem; velocidade grande a esquerda (RPM + turbo) e consumo grande a direita (media da viagem + L/h). Temas novos: Garagem Ambar, Costa Neon, Simbionte e Carnificina."
+  "versionCode": 38,
+  "versionName": "0.25.1",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.25.1/jetta-virtual-cockpit-v0.25.1-debug.apk",
+  "notes": "Correcao: o carro ficava cortado embaixo na Home nova (a faixa superior encurtou o palco e o deslocamento de 9vh empurrava as rodas para fora). Deslocamento reduzido para 3vh e faixa superior mais enxuta. Validado em 1280x720, 1024x600 e 1024x552."
 }
