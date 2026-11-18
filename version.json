@@ -1,6 +1,6 @@
 {
-  "versionCode": 17,
-  "versionName": "0.12.4",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.12.4/jetta-virtual-cockpit-v0.12.4-debug.apk",
-  "changelog": "Cockpit: títulos removidos de dentro dos mostradores. Home: palco limpo, só o carro."
+  "versionCode": 18,
+  "versionName": "0.12.5",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.12.5/jetta-virtual-cockpit-v0.12.5-debug.apk",
+  "changelog": "Correção do fantasma no giro 360º: o carro encaixa no ângulo mais próximo ao parar."
 }
