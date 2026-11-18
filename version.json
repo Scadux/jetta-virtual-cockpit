@@ -1,6 +1,6 @@
 {
-  "versionCode": 18,
-  "versionName": "0.12.5",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.12.5/jetta-virtual-cockpit-v0.12.5-debug.apk",
-  "changelog": "Correção do fantasma no giro 360º: o carro encaixa no ângulo mais próximo ao parar."
+  "versionCode": 19,
+  "versionName": "0.13.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.13.0/jetta-virtual-cockpit-v0.13.0-debug.apk",
+  "changelog": "Temas de fundo da Home: 6 opções (Escuro, Showroom, Pôr do sol, Oceano, Roxo neon, Carbono)."
 }
