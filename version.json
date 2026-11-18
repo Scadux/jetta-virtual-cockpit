@@ -1,6 +1,6 @@
 {
-  "versionCode": 29,
-  "versionName": "0.20.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.20.0/jetta-virtual-cockpit-v0.20.0-debug.apk",
-  "notes": "Farol automático: das 18h às 6h o carro acende o farol (lente acesa + halo + luz no chão) e a lanterna vermelha. A troca é automática, sem precisar reiniciar o app."
+  "versionCode": 30,
+  "versionName": "0.21.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.21.0/jetta-virtual-cockpit-v0.21.0-debug.apk",
+  "notes": "Botão Conectar com OBD2: agora dá para conectar direto no Cockpit e no Diagnóstico, sem abrir o menu de configurações. O status no topo da tela também é tocável (conecta/desconecta)."
 }
