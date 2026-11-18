@@ -1,6 +1,6 @@
 {
-  "versionCode": 33,
-  "versionName": "0.23.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.23.0/jetta-virtual-cockpit-v0.23.0-debug.apk",
-  "notes": "Barra de mídia de verdade: agora o app reconhece o que está tocando no Deezer, Spotify etc. (música, artista e app) e os botões pausam, retomam e trocam de faixa. Na primeira vez é preciso autorizar o acesso a notificações: toque na barra de mídia e ative o Jetta Virtual Cockpit."
+  "versionCode": 34,
+  "versionName": "0.23.1",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.23.1/jetta-virtual-cockpit-v0.23.1-debug.apk",
+  "notes": "Correção da barra de mídia: sem a autorização de acesso a notificações, qualquer toque na barra agora abre a tela de ativação (antes o botão ▶ abria o Deezer e a música nunca aparecia). O aviso ficou bem visível na barra e o menu ⚙ mostra se o acesso está ATIVADO ou não."
 }
