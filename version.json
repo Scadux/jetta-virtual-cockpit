@@ -1,6 +1,6 @@
 {
-  "versionCode": 38,
-  "versionName": "0.25.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.25.1/jetta-virtual-cockpit-v0.25.1-debug.apk",
-  "notes": "Correcao: o carro ficava cortado embaixo na Home nova (a faixa superior encurtou o palco e o deslocamento de 9vh empurrava as rodas para fora). Deslocamento reduzido para 3vh e faixa superior mais enxuta. Validado em 1280x720, 1024x600 e 1024x552."
+  "versionCode": 39,
+  "versionName": "0.26.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.26.0/jetta-virtual-cockpit-v0.26.0-debug.apk",
+  "notes": "O tema escolhido (ex.: Costa Neon) agora aparece tambem no Cockpit, nao so na Home: o cenario fica atras dos mostradores e dos cartoes, que mantem o fundo escuro para continuar legiveis. O numero da velocidade ganhou sombra para ficar legivel sobre temas claros."
 }
