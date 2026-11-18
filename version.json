@@ -1,6 +1,1 @@
-{
-  "versionCode": 12,
-  "versionName": "0.11.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.11.0/jetta-virtual-cockpit-v0.11.0-debug.apk",
-  "notes": "v0.11.0: 73 carros brasileiros com busca e filtro por marca; cada carro guarda a sua própria cor; preto corrigido nos desenhos realistas."
-}
+{"apkUrl":"https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.12.0/jetta-virtual-cockpit-v0.12.0-debug.apk","notes":"v0.12.0: fundo preto removido do carro na Home; lista de carros enquadrada de novo; desenhos realistas em todos os 73 carros.","versionCode":13,"versionName":"0.12.0"}
