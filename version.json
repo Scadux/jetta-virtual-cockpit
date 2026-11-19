@@ -1,6 +1,6 @@
 {
-  "versionCode": 44,
-  "versionName": "0.29.2",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.29.2/jetta-virtual-cockpit-v0.29.2-debug.apk",
-  "notes": "Fotos HEIC (iPhone) agora funcionam no tema Minha Foto: o app converte para JPG sozinho ao escolher a foto, sem precisar converter antes. Fotos em retrato entram na orientacao certa."
+  "versionCode": 45,
+  "versionName": "0.29.3",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.29.3/jetta-virtual-cockpit-v0.29.3-debug.apk",
+  "notes": "Com o tema Minha Foto ativo, o carro nao aparece mais no centro da Home — fica so a sua foto de fundo, com as informacoes nas laterais. Nos outros temas o carro continua normal."
 }
