@@ -1,6 +1,6 @@
 {
-  "versionCode": 47,
-  "versionName": "0.30.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.1/jetta-virtual-cockpit-v0.30.1-debug.apk",
-  "notes": "Contraste tambem na aba ENGINE: com foto de fundo, os cartoes de sensor ficam solidos (antes os sem leitura ficavam translucidos e a foto vazava por tras, deixando a aba inteira apagada). Os alertas de temperatura e turbo continuam em ambar e vermelho."
+  "versionCode": 48,
+  "versionName": "0.30.2",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.2/jetta-virtual-cockpit-v0.30.2-debug.apk",
+  "notes": "Diagnostico de conexao OBD2: a tela AJUSTES agora mostra o motivo exato do erro de conexao (antes so aparecia ERRO DE CONEXAO), o nome e o endereco do adaptador salvo e se o Bluetooth esta ligado. Ajuda a descobrir se o problema e o adaptador ocupado, o aparelho errado ou o Bluetooth desligado."
 }
