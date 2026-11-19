@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<title>Diagnóstico — Jetta Virtual Cockpit</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#080b10;color:#f1f4f8;font-family:Segoe UI,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:24px 5vw 40px}
+h1{font-size:22px;letter-spacing:.12em;margin:0 0 4px}
+h1 span{color:#e33b43}
+.sub{color:#8d9aaa;font-size:13px;margin:0 0 20px}
+h2{font-size:13px;letter-spacing:.18em;color:#f1f4f8;margin:22px 0 8px}
+.box{background:#101722;border:1px solid #253142;border-radius:12px;padding:14px 18px}
+.ua{font-size:12px;color:#c6d0db;word-break:break-all;line-height:1.5}
+.row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #1b2534;font-size:14px}
+.row:last-child{border-bottom:0}
+.row .k{color:#c6d0db}
+.ok{color:#2ecc71;font-weight:700}
+.bad{color:#ff6b6b;font-weight:700}
+.tapbtn{display:block;width:100%;max-width:480px;margin:12px auto 0;background:#e33b43;color:#fff;border:0;border-radius:12px;font-weight:800;letter-spacing:.1em;font-size:20px;padding:22px 24px;text-align:center}
+.tapbtn.tapped{background:#1e8449}
+.tapcount{text-align:center;color:#c6d0db;font-size:15px;margin-top:10px}
+.note{color:#8d9aaa;font-size:12px;line-height:1.5;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>JETTA <span>VIRTUAL COCKPIT</span> — DIAGNÓSTICO</h1>
+<p class="sub">Abra esta página no navegador da multimídia e mande uma foto da tela.</p>
+
+<h2>NAVEGADOR</h2>
+<div class="box"><div class="ua" id="ua">…</div></div>
+
+<h2>TESTES AUTOMÁTICOS</h2>
+<div class="box" id="tests"></div>
+
+<h2>TESTE DE TOQUE</h2>
+<div class="box">
+<button class="tapbtn" id="tapBtn" type="button">TOQUE AQUI</button>
+<div class="tapcount" id="tapCount">Toques: 0</div>
+</div>
+
+<p class="note">Se o contador de toques subir, a tela responde normalmente ao toque. Se o relógio abaixo parar, o JavaScript da página travou.</p>
+<div class="box"><div class="row"><span class="k">Relógio (muda a cada segundo)</span><b id="tick">…</b></div></div>
+</div>
+<script>
+/* ES5 proposital: esta página precisa rodar até num motor JavaScript antigo. */
+(function(){
+  var uaEl = document.getElementById('ua');
+  uaEl.textContent = navigator.userAgent || '(sem userAgent)';
+
+  var tests = [];
+  function add(name, ok, detail){
+    tests.push({name: name, ok: ok, detail: detail || ''});
+  }
+
+  /* localStorage: leitura e escrita */
+  try {
+    localStorage.setItem('__diag__', '1');
+    var v = localStorage.getItem('__diag__');
+    localStorage.removeItem('__diag__');
+    add('localStorage (ler/escrever)', v === '1');
+  } catch (e) { add('localStorage (ler/escrever)', false, String(e && e.message || e)); }
+
+  /* JSON */
+  try { add('JSON.parse', JSON.parse('{"a":1}').a === 1); }
+  catch (e) { add('JSON.parse', false); }
+
+  /* NodeList.forEach (usado nos botões de navegação do app) */
+  try { add('NodeList.forEach', typeof document.querySelectorAll('body').forEach === 'function'); }
+  catch (e) { add('NodeList.forEach', false); }
+
+  /* classList.toggle */
+  try { add('classList.toggle', typeof document.body.classList.toggle === 'function'); }
+  catch (e) { add('classList.toggle', false); }
+
+  /* requestAnimationFrame */
+  add('requestAnimationFrame', typeof window.requestAnimationFrame === 'function');
+
+  /* fetch (o site de download usa) */
+  add('fetch', typeof window.fetch === 'function');
+
+  /* async/await: testado via new Function para não matar a página se falhar */
+  try { new Function('return (async function(){})();'); add('async/await', true); }
+  catch (e) { add('async/await', false); }
+
+  /* optional chaining ?. */
+  try { new Function('return ({}?.a);'); add('optional chaining (?.)', true); }
+  catch (e) { add('optional chaining (?.)', false); }
+
+  /* arrow function */
+  try { new Function('return (() => 1)();'); add('arrow function (=>)', true); }
+  catch (e) { add('arrow function (=>)', false); }
+
+  /* template literal */
+  try { new Function('return `x${1}`;'); add('template literal (`…`)', true); }
+  catch (e) { add('template literal (`…`)', false); }
+
+  var html = '';
+  for (var i = 0; i < tests.length; i++) {
+    var t = tests[i];
+    html += '<div class="row"><span class="k">' + t.name + (t.detail ? ' — ' + t.detail : '') +
+      '</span><span class="' + (t.ok ? 'ok' : 'bad') + '">' + (t.ok ? 'OK' : 'FALHOU') + '</span></div>';
+  }
+  document.getElementById('tests').innerHTML = html;
+
+  /* Contador de toques */
+  var count = 0;
+  var btn = document.getElementById('tapBtn');
+  btn.onclick = function(){
+    count++;
+    document.getElementById('tapCount').textContent = 'Toques: ' + count;
+    btn.textContent = 'TOQUE REGISTRADO (' + count + ')';
+    btn.className = 'tapbtn tapped';
+  };
+
+  /* Relógio: prova que o JavaScript continua vivo */
+  function tick(){
+    var d = new Date();
+    var h = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+    document.getElementById('tick').textContent =
+      (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>
