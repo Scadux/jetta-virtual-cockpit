@@ -1,6 +1,6 @@
 {
-  "versionCode": 45,
-  "versionName": "0.29.3",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.29.3/jetta-virtual-cockpit-v0.29.3-debug.apk",
-  "notes": "Com o tema Minha Foto ativo, o carro nao aparece mais no centro da Home — fica so a sua foto de fundo, com as informacoes nas laterais. Nos outros temas o carro continua normal."
+  "versionCode": 46,
+  "versionName": "0.30.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.0/jetta-virtual-cockpit-v0.30.0-debug.apk",
+  "notes": "Contraste forte com foto de fundo: as informacoes da Home e do Cockpit agora ficam sobre placas escuras, legiveis em qualquer foto. Nova tela AJUSTES na aba lateral, abaixo de CARRO, com interruptores e botoes: adaptador OBD2, demonstracao, inicio automatico, atualizacao, musica e sobre. A engrenagem do canto inferior saiu."
 }
