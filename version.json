@@ -1,6 +1,6 @@
 {
-  "versionCode": 49,
-  "versionName": "0.30.3",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.3/jetta-virtual-cockpit-v0.30.3-debug.apk",
-  "notes": "Corrige travamento na tela Home: o app não pode mais congelar por erro de leitura do armazenamento ou da tela de Ajustes."
+  "versionCode": 50,
+  "versionName": "0.30.4",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.4/jetta-virtual-cockpit-v0.30.4-debug.apk",
+  "notes": "Corrige o travamento total do app: remove o async/await (a WebView do sistema da multimidia pode ser anterior ao Chrome 55 e rejeitava o script inteiro) e só envia dados para a página depois que ela termina de carregar."
 }
