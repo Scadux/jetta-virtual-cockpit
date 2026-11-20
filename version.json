@@ -1,6 +1,6 @@
 {
-  "versionCode": 53,
-  "versionName": "0.30.7",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.7/jetta-virtual-cockpit-v0.30.7-debug.apk",
-  "notes": "A busca Bluetooth agora mostra o andamento na janela (rodinha + texto) e avisa quando não encontra nenhum aparelho; a verificação de atualização ignora o cache do GitHub."
+  "versionCode": 54,
+  "versionName": "0.31.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.31.0/jetta-virtual-cockpit-v0.31.0-debug.apk",
+  "notes": "Mostradores com fundo escuro de verdade (o tema não atravessa mais o mostrador) e 5 estilos de painel analógico para escolher no próprio Cockpit."
 }
