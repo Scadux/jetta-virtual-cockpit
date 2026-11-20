@@ -1,6 +1,6 @@
 {
-  "versionCode": 56,
-  "versionName": "0.33.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.33.0/jetta-virtual-cockpit-v0.33.0-debug.apk",
-  "notes": "Faces de mostrador: 4 desenhos diferentes (Clássico, Neon, Esportivo, Retrô) que mudam marcadores, anel, brilho e ponteiro — e compõem com as 5 cores. Seletores COR + FACE numa barra abaixo das abas do Cockpit."
+  "versionCode": 57,
+  "versionName": "0.34.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.34.0/jetta-virtual-cockpit-v0.34.0-debug.apk",
+  "notes": "Corrige o conteúdo dos mostradores que estourava o círculo no GT e no Drive Lab, trava o tamanho do texto e adiciona a animação de abertura com o logo."
 }
