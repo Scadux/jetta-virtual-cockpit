@@ -1,6 +1,6 @@
 {
-  "versionCode": 62,
-  "versionName": "0.39.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.39.0/jetta-virtual-cockpit-v0.39.0-debug.apk",
-  "notes": "Atalhos editaveis: 4 apps + botao Mais. Adicione qualquer app da multimidia e remova os que nao usa. A barra de musica continua visivel."
+  "versionCode": 63,
+  "versionName": "0.39.1",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.39.1/jetta-virtual-cockpit-v0.39.1-debug.apk",
+  "notes": "Seletor de apps mostra TODOS os apps da multimidia (o Spotify e outros ficavam de fora) + busca por nome + contador."
 }
