@@ -1,6 +1,6 @@
 {
-  "versionCode": 54,
-  "versionName": "0.31.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.31.0/jetta-virtual-cockpit-v0.31.0-debug.apk",
-  "notes": "Mostradores com fundo escuro de verdade (o tema não atravessa mais o mostrador) e 5 estilos de painel analógico para escolher no próprio Cockpit."
+  "versionCode": 55,
+  "versionName": "0.32.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.32.0/jetta-virtual-cockpit-v0.32.0-debug.apk",
+  "notes": "Dois modelos novos de painel: GT (tacômetro grande no centro, turbo e água dos lados) e QUATRO (4 mostradores em fila). As 5 cores de mostrador valem para os modelos novos também."
 }
