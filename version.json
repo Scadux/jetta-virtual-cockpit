@@ -1,6 +1,6 @@
 {
-  "versionCode": 52,
-  "versionName": "0.30.6",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.6/jetta-virtual-cockpit-v0.30.6-debug.apk",
-  "notes": "Corrige a aba Carro: textos sem sobreposição, troca de cor funcionando e botões laterais maiores."
+  "versionCode": 53,
+  "versionName": "0.30.7",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.7/jetta-virtual-cockpit-v0.30.7-debug.apk",
+  "notes": "A busca Bluetooth agora mostra o andamento na janela (rodinha + texto) e avisa quando não encontra nenhum aparelho; a verificação de atualização ignora o cache do GitHub."
 }
