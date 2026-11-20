@@ -1,6 +1,6 @@
 {
-  "versionCode": 60,
-  "versionName": "0.37.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.37.0/jetta-virtual-cockpit-v0.37.0-debug.apk",
-  "changelog": "Conserto dos mostradores GT e Drive Lab (conteúdo central dentro do círculo) + cartões Engine mais escuros e legíveis + ajuste fino no Street."
+  "versionCode": 61,
+  "versionName": "0.38.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.38.0/jetta-virtual-cockpit-v0.38.0-debug.apk",
+  "changelog": "Computador de bordo completo (tela VIAGEM, custo R$ Aditivada/Podium) + cor livre para o carro + banco de DTCs com 9.414 códigos + backup das configurações + 4 atalhos novos."
 }
