@@ -1,6 +1,6 @@
 {
-  "versionCode": 55,
-  "versionName": "0.32.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.32.0/jetta-virtual-cockpit-v0.32.0-debug.apk",
-  "notes": "Dois modelos novos de painel: GT (tacômetro grande no centro, turbo e água dos lados) e QUATRO (4 mostradores em fila). As 5 cores de mostrador valem para os modelos novos também."
+  "versionCode": 56,
+  "versionName": "0.33.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.33.0/jetta-virtual-cockpit-v0.33.0-debug.apk",
+  "notes": "Faces de mostrador: 4 desenhos diferentes (Clássico, Neon, Esportivo, Retrô) que mudam marcadores, anel, brilho e ponteiro — e compõem com as 5 cores. Seletores COR + FACE numa barra abaixo das abas do Cockpit."
 }
