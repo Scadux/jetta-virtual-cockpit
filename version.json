@@ -1,6 +1,6 @@
 {
-  "versionCode": 61,
-  "versionName": "0.38.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.38.0/jetta-virtual-cockpit-v0.38.0-debug.apk",
-  "changelog": "Computador de bordo completo (tela VIAGEM, custo R$ Aditivada/Podium) + cor livre para o carro + banco de DTCs com 9.414 códigos + backup das configurações + 4 atalhos novos."
+  "versionCode": 62,
+  "versionName": "0.39.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.39.0/jetta-virtual-cockpit-v0.39.0-debug.apk",
+  "notes": "Atalhos editaveis: 4 apps + botao Mais. Adicione qualquer app da multimidia e remova os que nao usa. A barra de musica continua visivel."
 }
