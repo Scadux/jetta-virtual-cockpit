@@ -1,6 +1,1 @@
-{
-  "versionCode": 58,
-  "versionName": "0.35.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.35.0/jetta-virtual-cockpit-v0.35.0-debug.apk",
-  "changelog": "OBD2 expandido (todos os sensores consultados) + luz de troca + alerta de velocidade + zona de perigo + linha vermelha ajustável + cronômetro 0–100 + faces Minimal e Pista."
-}
+{"apkUrl":"https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.36.0/jetta-virtual-cockpit-v0.36.0-debug.apk","changelog":"Marcha estimada (velocidade × rotação, com *) + simulação de direção no modo demonstração + histórico de falhas com data.","versionCode":59,"versionName":"0.36.0"}
