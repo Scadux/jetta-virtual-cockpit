@@ -1,6 +1,6 @@
 {
-  "versionCode": 63,
-  "versionName": "0.39.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.39.1/jetta-virtual-cockpit-v0.39.1-debug.apk",
-  "notes": "Seletor de apps mostra TODOS os apps da multimidia (o Spotify e outros ficavam de fora) + busca por nome + contador."
+  "versionCode": 64,
+  "versionName": "0.40.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.0/jetta-virtual-cockpit-v0.40.0-debug.apk",
+  "notes": "2o lote 3D: Gol, HB20, Virtus, T-Cross, Nivus, Argo e Cruze em 3D real (16 angulos, preto e noturno). Frota 3D: 18 de 73 carros."
 }
