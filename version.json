@@ -1,6 +1,6 @@
 {
-  "versionCode": 57,
-  "versionName": "0.34.0",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.34.0/jetta-virtual-cockpit-v0.34.0-debug.apk",
-  "notes": "Corrige o conteúdo dos mostradores que estourava o círculo no GT e no Drive Lab, trava o tamanho do texto e adiciona a animação de abertura com o logo."
+  "versionCode": 58,
+  "versionName": "0.35.0",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.35.0/jetta-virtual-cockpit-v0.35.0-debug.apk",
+  "changelog": "OBD2 expandido (todos os sensores consultados) + luz de troca + alerta de velocidade + zona de perigo + linha vermelha ajustável + cronômetro 0–100 + faces Minimal e Pista."
 }
