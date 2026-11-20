@@ -1,6 +1,6 @@
 {
-  "versionCode": 51,
-  "versionName": "0.30.5",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.5/jetta-virtual-cockpit-v0.30.5-debug.apk",
-  "notes": "Corrige o layout em todas as telas na WebView antiga da multimídia (grade CSS, clamp, gap, aspect-ratio e inset substituídos por flexbox e margens), volta a mostrar o carro no seletor e adiciona a busca por aparelhos Bluetooth direto no app (procurar + parear o adaptador sem sair do app)."
+  "versionCode": 52,
+  "versionName": "0.30.6",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.30.6/jetta-virtual-cockpit-v0.30.6-debug.apk",
+  "notes": "Corrige a aba Carro: textos sem sobreposição, troca de cor funcionando e botões laterais maiores."
 }
