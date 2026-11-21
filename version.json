@@ -1,6 +1,6 @@
 {
-  "versionCode": 65,
-  "versionName": "0.40.1",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.1/jetta-virtual-cockpit-v0.40.1-debug.apk",
-  "notes": "Seletor lista tambem os apps da Home nao instalados (ex.: Spotify), marcados como nao encontrado, para poder remove-los."
+  "versionCode": 66,
+  "versionName": "0.40.2",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.2/jetta-virtual-cockpit-v0.40.2-debug.apk",
+  "notes": "Conectar pelo endereco MAC do adaptador, sem depender da busca Bluetooth (a K2001N nao encontra o adaptador na busca)."
 }
