@@ -1,6 +1,6 @@
 {
-  "versionCode": 68,
-  "versionName": "0.40.4",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.4/jetta-virtual-cockpit-v0.40.4-debug.apk",
-  "notes": "PIN automatico no pareamento: a K2001N nao tem tela de PIN, e o adaptador exige o codigo antes de aceitar a conexao (erro Broken pipe)."
+  "versionCode": 69,
+  "versionName": "0.40.5",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.5/jetta-virtual-cockpit-v0.40.5-debug.apk",
+  "notes": "Conexao tenta socket inseguro primeiro (dispensa o pareamento), depois seguro e canal 1."
 }
