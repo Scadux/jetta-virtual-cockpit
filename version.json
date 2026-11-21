@@ -1,6 +1,6 @@
 {
-  "versionCode": 66,
-  "versionName": "0.40.2",
-  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.2/jetta-virtual-cockpit-v0.40.2-debug.apk",
-  "notes": "Conectar pelo endereco MAC do adaptador, sem depender da busca Bluetooth (a K2001N nao encontra o adaptador na busca)."
+  "versionCode": 67,
+  "versionName": "0.40.3",
+  "apkUrl": "https://github.com/Scadux/jetta-virtual-cockpit/releases/download/v0.40.3/jetta-virtual-cockpit-v0.40.3-debug.apk",
+  "notes": "Se o pareamento falhar ao iniciar, conecta direto pelo socket (a conexao dispara o pareamento do sistema)."
 }
